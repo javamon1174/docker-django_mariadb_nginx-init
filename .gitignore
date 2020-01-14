@@ -1,0 +1,88 @@
+# user files
+_gittest
+_jloader
+*.zip
+mysql.cnf
+venv
+venv/
+db.sqlite3
+*.pc
+*.pyc
+*.pyo
+__pycache__
+.deps
+.libs
+/_build/
+.idea/
+__pycache__/
+static/
+data/
+web/__pycache__
+*/cpython-36/*
+jloader-env
+db_info.py
+data.json
+*.pub
+*.zip
+migrations
+
+db.*
+*.sqlite3
+/ssh
+config/ssh
+id_rsa
+ssh/
+
+_jloader
+_blog
+_gittest
+jenkins/
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# Rope
+.ropeproject
+
+# Django stuff:
+*.log
+*.pot
+*.env
+

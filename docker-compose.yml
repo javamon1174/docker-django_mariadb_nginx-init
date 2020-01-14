@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  db:
+    container_name: mytube_db
+    image: mariadb:latest
+    restart: always
+    networks:
+      - mytube-net
+    volumes:
+      - ~/backup/db:/var/lib/mysql
+      - ./config/mysql:/etc/mysql
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mytube_admin
+  web:
+    container_name: mytube_web
+    build: .
+    command: bash -c "python manage.py collectstatic --noinput&& python manage.py makemigrations && python manage.py migrate && gunicorn mytube_web.wsgi -b 0.0.0.0:8000 --workers 3"
+    volumes:
+      - .:/code
+    expose:
+      - "8000"
+    depends_on:
+      - db
+    restart: always
+    networks:
+      - mytube-net
+  nginx:
+    image: nginx:latest
+    container_name: mytube_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - .:/code
+      - ./config/nginx:/etc/nginx/conf.d
+      - ./static:/static
+    depends_on:
+      - web
+    restart: always
+    networks:
+      - mytube-net
+
+networks:
+  mytube-net:
+    external:
+      name: mytube-net
+
